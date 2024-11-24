@@ -1,38 +1,190 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=WindSong:wght@400;500&display=swap');
+/* Default Theme (Dark) */
+.App.dark {
+  --bg-color: #cccaca;
+  --nav-bg-color: #000;
+  --text-color: #e0e0e0;
+  --content-text-color: #333;
+  --link-color: #e0e0e0;
+  --link-hover-color: #5d6c71;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Light Theme Overlay */
+.light-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 1000;
+  animation: fadeIn 1s ease-in-out;
+}
+.light-overlay .gif-container {
+  width: 50%; /* Adjust size as needed */
+  max-width: 400px;
+  aspect-ratio: 1; /* Keeps the GIF square */
+  overflow: hidden;
+  border-radius: 15px; /* Rounded corners for a polished look */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Adds depth */
+  margin-bottom: 20px; /* Space between GIF and text */
+}
+.funny-message {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: bounce 1s infinite alternate;
 }
 
-.App-link {
-  color: #61dafb;
+.big-switch {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
 }
 
-@keyframes App-logo-spin {
+.big-switch:hover {
+  background-color: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Roboto mono, sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: all 0.5s ease-in-out;
+}
+/* Navigation Bar */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--nav-bg-color);
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.website-name {
+  font-family: 'WindSong', sans-serif;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+.navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.navigation li {
+  margin: 0 15px;
+}
+.navigation a {
+  text-decoration: none;
+  font-size: 18px;
+}
+.theme-toggle {
+  background: none;
+  font-size: 20px;
+  color: var(--link-color);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--link-hover-color);
+  color: #fff;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--bg-color);
+  margin-left: 65px;
+}
+
+.content section {
+  margin-bottom: 40px;
+}
+
+h1, h2 {
+  color: var(--content-text-color);
+}
+
+/* Social Media Column */
+.social-media-column {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.social-media-column a {
+  color: #333;
+  font-size: 24px;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-media-column a:hover {
+  color: #00bcd4; /* Hover color */
+  transform: scale(1.2); /* Slight zoom effect */
 }
